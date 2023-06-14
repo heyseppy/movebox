@@ -24,6 +24,7 @@
     <ProjectGuid>{e5771413-1773-44fa-930f-baf4cc3e73f4}</ProjectGuid>
     <RootNamespace>FirstSDLWindow</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Movement Gym</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
