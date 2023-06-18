@@ -1,4 +1,5 @@
 #include "Simulation.h"
+#include "Car.h"
 #include <stdio.h>
 
 Simulation::Simulation()
@@ -8,7 +9,7 @@ Simulation::~Simulation()
 {}
 
 void Simulation::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
-{
+{ 
 	int flags = 0;
 
 	// check if user requested fullscreen
@@ -23,6 +24,7 @@ void Simulation::init(const char* title, int xpos, int ypos, int width, int heig
 		std::cout << "Everything initialised" << std::endl;
 
 		window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
+		surface = SDL_CreateRGBSurface(0, width, height, 32, 0, 0, 0, 0);
 
 		if (window)
 		{
@@ -42,6 +44,8 @@ void Simulation::init(const char* title, int xpos, int ypos, int width, int heig
 	{
 		isRunning = false;
 	}
+
+	
 }
 
 void Simulation::update()
@@ -52,16 +56,16 @@ void Simulation::update()
 
 void Simulation::render()
 {
-	SDL_RenderClear(renderer);
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	SDL_RenderPresent(renderer);
-
-
 }
 
 void Simulation::handleEvents()
 {
 	SDL_Event event;
 	SDL_PollEvent(&event);
+
+	drawCar();
 
 	switch (event.type){
 		case SDL_QUIT:
@@ -82,3 +86,16 @@ void Simulation::clean()
 	std::cout << "Game cleaned" << std::endl;
 }
 
+void Simulation::drawCar(Car vehicle)
+{
+	// draw car as a rectangle
+	SDL_Rect rect;
+	rect.x = 250;
+	rect.y = 150;
+	rect.w = 10;
+	rect.h = 10;
+
+	SDL_SetRenderDrawColor(renderer, 0, 255, 255, 255);
+	SDL_RenderDrawRect(renderer, &rect);
+	std::cout << "Car drawn" << std::endl;
+}

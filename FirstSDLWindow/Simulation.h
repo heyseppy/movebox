@@ -1,5 +1,6 @@
 #pragma once
 #include "SDL.h"
+#include "Car.h"
 #include <stdio.h>
 #include <iostream>
 
@@ -13,6 +14,8 @@ public:
 	
 	void handleEvents();
 
+	void drawCar(Car vehicle);
+
 	void update();
 	void render();
 	void clean();
@@ -25,6 +28,7 @@ private:
 
 	SDL_Window* window;
 	SDL_Renderer* renderer;
+	SDL_Surface* surface;
 
 
 
